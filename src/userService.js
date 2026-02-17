@@ -11,12 +11,16 @@ function runUserCode(code) {
 
 module.exports = { getUser, runUserCode }
 
-function loadData(callback) {
-  setTimeout(() => {
-    fetch("/api/data").then(res => {
-      res.json().then(data => {
-        callback(data);
-      });
-    });
-  }, 1000);
-}
++function loadData(callback) {
++  setTimeout(() => {
++    fetch("/api/data")
++      .then(res => {
++        if (!res.ok) {
++          throw new Error(`HTTP error: ${res.status}`);
++        }
++        return res.json();
++      })
++      .then(data => callback(null, data))
++      .catch(err => callback(err, null));
++  }, 1000);
++}
