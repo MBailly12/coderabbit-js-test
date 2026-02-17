@@ -10,3 +10,13 @@ function runUserCode(code) {
 }
 
 module.exports = { getUser, runUserCode }
+
+function loadData(callback) {
+  setTimeout(() => {
+    fetch("/api/data").then(res => {
+      res.json().then(data => {
+        callback(data);
+      });
+    });
+  }, 1000);
+}
