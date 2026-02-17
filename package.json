@@ -1,0 +1,9 @@
+{
+  "name": "coderabbit-js-test",
+  "version": "1.0.0",
+  "description": "Sample repo to test CodeRabbit",
+  "main": "src/calculator.js",
+  "scripts": {
+    "test": "node --test"
+  }
+}
